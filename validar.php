@@ -15,7 +15,7 @@
 			{
 				session_start();
 				$_SESSION['id'] = $fila[0];
-				//header("location: login.php");
+				header("location: user_services.php");
 				print("Ir a pagina de usuarios");
 			}
 			else
@@ -32,6 +32,6 @@
 	}
 
 	print("<br>");
-	print("<a href = index.php>Inicio</a> ");
+	print("<a href = login.php>Inicio</a> ");
 
 ?>

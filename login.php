@@ -34,7 +34,7 @@ session_destroy();
 				<br>
 
 				<div class="container">
-					<div class="alert alert-info">Por favor, ingrese su usario y su contraseña</div>	
+					<div class="alert alert-info">Por favor, ingrese su usuario y su contraseña</div>	
 				</div>
 				<div class="container">
 					<div class="caja">
@@ -51,20 +51,31 @@ session_destroy();
 											</div>                                                  
 					                    </div>
 
-										<div class="mb-3">
+										<div class="form-group">
 											<label class="form-label">Contraseña</label>
-											<div class="form-group">
-						                       <div class="input-group mb-2">
+											<div class="input-group mb-2">
 						                          <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock fa-2x"></i></span>
 						                          <input class="form-control" type="password" name="password" placeholder="Su contraseña" required>	
-						                        </div>
 						                    </div>
 										</div>
 									</div>
-									<hr>
+									<div class="row">
+										<div class="col-md-3">
+											<br>
+											<button type="submit" class=" btn btn-primary">Enviar</button>	
+										</div>
+										<div class="col-md-6">
+											
+										</div>
+										<div class="col-md-3">
+										<div class="alert alert-info">
+											<a href="#">No tiene una cuenta? Registrese aquí</a>
+										</div>
+									</div>	
+									</div>
 									<br>
 									<br>
-									<button type="submit" class="btn-primary">Enviar</button>	
+									
 								</form>
 							</div>
 						</div>

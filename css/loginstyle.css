@@ -19,7 +19,7 @@
 }
 
 .fondo6{
-	background: lightpink;
+	background: black;
 }
 
 .medida_cm{
@@ -36,6 +36,7 @@ body{
 }
 
 
+
 .caja{
 	border-radius: 10px;
 	border: 1px solid lightgray;
@@ -44,6 +45,22 @@ body{
 	margin: 10px ;
 	padding: 10px;
 	text-align: center;
+}
+
+.cajaServicios{
+	border-radius: 10px;
+	border: 1px solid lightgray;
+	box-shadow: 5px 5px 5px gray;
+	display: block;
+	margin: 10px ;
+	padding: 10px;
+	text-align: center;
+}
+
+.cajaServicios:hover{
+	transition: .6s ease-out;
+	transform:scale(1.1);
+	box-shadow: 0px 0px 15px 15px lightskyblue;
 }
 
 .cajaPrincipal{
@@ -60,10 +77,10 @@ body{
 	background: #EEFFFF;
 }
 .escalar{
-	width: 200px;
-	height: 130px;
-	margin: 10px 10px;
+	width: 80%;
+	height:  90%;
 }
+
 
 .borde_der{
 	border-right: #E1E1E1 1px solid;
