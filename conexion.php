@@ -1,7 +1,7 @@
 <?php 
 	function Conectar(){
-		$servername = 'localhost';
-		$database = 'prueba';
+		$servername = 'localhost:3309';
+		$database = 'pruebas';
 		$username = 'root';
 		$password = '';
 
