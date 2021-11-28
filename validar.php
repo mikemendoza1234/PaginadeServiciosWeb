@@ -4,7 +4,7 @@
 	$pass = $_REQUEST['password'];
 
 	$link = Conectar();
-	$query = "SELECT * FROM usuarios WHERE USUARIO = '$user'";
+	$query = "SELECT * FROM usuario WHERE usuario = '$user'";
 	$consulta = mysqli_query($link,$query);
 	$datos = mysqli_num_rows($consulta);
 	
@@ -30,7 +30,7 @@
 		print("Error al consultar la base de datos, contactar al Administrador");
 	}
 	elseif ($datos == 0){
-		header($query);
+		header("location: loginerror.php?err=0");
 	}
 
 	print("<br>");
