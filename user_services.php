@@ -68,7 +68,7 @@ session_destroy();
 							<div class="row">
 								<div>
 									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" name="p[]" value="limpieza">
+										<input class="form-check-input" type="checkbox" name="servicios[]" value="limpieza">
 										<label class="form-check-label">Limpieza de PC</label>
 										<p>
 											<br>Costo $4000
@@ -89,7 +89,7 @@ session_destroy();
 							<div class="row">
 								<div>
 									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" name="p[]" value="windows">
+										<input class="form-check-input" type="checkbox" name="servicios[]" value="windows">
 										<label class="form-check-label">Instalación de Windows</label>
 										<p>
 											<br>Costo $1000
@@ -110,7 +110,7 @@ session_destroy();
 							<div class="row">
 								<div>
 									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" name="p[]" value="software">
+										<input class="form-check-input" type="checkbox" name="servicios[]" value="software">
 										<label class="form-check-label">Instalación de<br>Software/Drivers</label>
 										<p>
 											<br>Costo $500
@@ -141,7 +141,7 @@ session_destroy();
 							<div class="row">
 								<div>
 									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" name="p[]" value="mantenimiento">
+										<input class="form-check-input" type="checkbox" name="servicios[]" value="mantenimiento">
 										<label class="form-check-label">Mantenimiento <br> Correctivo y preventivo</label>
 										<p>
 											<br>Costo $2000
@@ -162,7 +162,7 @@ session_destroy();
 							<div class="row">
 								<div>
 									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" name="p[]" value="respaldo">
+										<input class="form-check-input" type="checkbox" name="servicios[]" value="respaldo">
 										<label class="form-check-label">Respaldo de Archivos</label>
 										<p>
 											<br>Costo $700
@@ -183,7 +183,7 @@ session_destroy();
 							<div class="row">
 								<div>
 									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" name="p[]" value="reparacion">
+										<input class="form-check-input" type="checkbox" name="servicios[]" value="reparacion">
 										<label class="form-check-label">Reparación</label>
 										<p>
 											<br>Costo $7000
@@ -199,6 +199,7 @@ session_destroy();
 					<button type="submit" class=" btn-lg btn-primary">Enviar servicios</button>
 				</form>	 <!-- Fin del formularios -->
 				
+
 
 				<br>
 				<br>

@@ -6,7 +6,7 @@ session_destroy();
 <html>
 <head>
 	<meta charset="utf-8">	
-	<title>Ejemplos de Bootstrap</title>
+	<title>Login</title>
 	<meta name="vieport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Framework Bootstrap -->
 	<link rel="stylesheet" href="css/bootstrap/css/bootstrap.css">
@@ -23,7 +23,7 @@ session_destroy();
 				<div>
 					<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 						<div class="container-fluid">
-							<a href="#" class="navbar-brand"> Computer Services Inc</a>
+							<a href="login.php" class="navbar-brand"> Computer Services Inc</a>
 							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse2">
 								<span class="navbar-toggler-icon"></span>
 							</button>
@@ -59,6 +59,7 @@ session_destroy();
 						                    </div>
 										</div>
 									</div>
+									
 									<div class="row">
 										<div class="col-md-3">
 											<br>
@@ -68,11 +69,12 @@ session_destroy();
 											
 										</div>
 										<div class="col-md-3">
-										<div class="alert alert-info">
-											<a href="#">No tiene una cuenta? Registrese aquí</a>
-										</div>
-									</div>	
+											<div class="alert alert-info">
+												<a href="register.php">No tiene una cuenta? Registrese aquí</a>
+											</div>
+										</div>	
 									</div>
+
 									<br>
 									<br>
 									
