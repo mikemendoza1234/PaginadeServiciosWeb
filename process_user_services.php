@@ -1,3 +1,7 @@
+<?php  
+session_start();
+$username = $_SESSION['id'];
+?>
 <html>
 <head>
 	<meta charset="utf-8">	
@@ -37,7 +41,12 @@
 				<br>
 				<br>
 				<div class="container">
-					<div class="alert alert-info">Los servicios seleccionados son</div>	
+					<div class="alert alert-info">
+						<?php  
+						print($username);
+						?>
+						, Los servicios seleccionados son
+					</div>	
 					<br>
 				</div>
 				<!-- Formulario con Buttons-->
@@ -47,6 +56,8 @@
 					$link = Conectar();
 					$contadorL = 0;
 					$costoTotal = 0;
+					$numServicios = 0;
+					$tiempoTotal = 0;
 					if (isset($_REQUEST['servicios'])) {
 						$contadorL = count($_REQUEST['servicios']);
 						$listaL = $_REQUEST['servicios'];
@@ -79,7 +90,8 @@
 						<div class="col-md-3">
 						<?php
 							//Contador
-									print("$fila[0]");
+									$numServicios++;
+									print("$numServicios");
 						?>
 						</div>
 						<div class="col-md-3">
@@ -92,6 +104,7 @@
 						<?php
 							//Tiempo del servicio
 									print("$fila[4] Hora/s");
+									$tiempoTotal += $fila[4];
 						?>
 						</div>
 						<div class="col-md-3">
@@ -112,11 +125,20 @@
 					}
 					?>
 					<div class="row">
-						<div class="col-md-8"></div>
+						<div class="col-md-6">
+							<?php
+								print(" <strong><br>Total de Servicios : " .$numServicios. "</strong>");
+							?>		
+						</div>
+						<div class="col-md-2">
+							<?php		
+								print("<strong><br>Tiempo Total : " .$tiempoTotal. " hrs </strong>" );
+							?>		
+						</div>
 						<div class="col-md-4">
 							<br>
 					<?php		
-						print("Costo Total : $" .$costoTotal);
+						print("<strong>Costo Total : $" .$costoTotal. "</strong>");
 					?>
 						</div>
 					</div>

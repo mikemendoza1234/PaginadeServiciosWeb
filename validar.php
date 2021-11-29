@@ -4,13 +4,20 @@
 	$pass = $_REQUEST['password'];
 
 	$link = Conectar();
-	$query = "SELECT USER, PASSWD FROM usuarios WHERE USER = '" . $user . "'";
+	//$query = "SELECT * FROM usuario WHERE usuario = '$user'";
+	$query = "SELECT usuario,passwd  FROM usuario WHERE usuario = '" . $user . "'";
 	$consulta = mysqli_query($link,$query);
 	$datos = mysqli_num_rows($consulta);
+	
+	//while ($other = mysqli_fetch_array($consulta)) {
+	//	echo $other['usuario'];
+	//}
+
 
 	if ($datos == 1)
 	{
 		while($fila = mysqli_fetch_row($consulta)){
+
 			if($fila[1] == $pass)
 			{
 				session_start();
@@ -20,7 +27,7 @@
 			}
 			else
 			{
-				header("location: loginerror.php?err=0");
+				header("location: loginerror.php?err=1");
 			}			
 		}
 	}
@@ -28,7 +35,7 @@
 		print("Error al consultar la base de datos, contactar al Administrador");
 	}
 	elseif ($datos == 0){
-		header("location: loginerror.php?err=1");
+		header("location: loginerror.php?err=0");
 	}
 
 	print("<br>");

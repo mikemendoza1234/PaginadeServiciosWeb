@@ -34,7 +34,7 @@ session_destroy();
 				<br>
 
 				<div class="container">
-					<div class="alert alert-info">Por favor, llene el formulario de registro</div>	
+					<div class="alert alert-danger">Datos erroneos, intente de nuevo</div>	
 				</div>
 				<div class="container">
 					<div class="caja">
