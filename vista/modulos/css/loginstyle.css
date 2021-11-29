@@ -1,95 +1,100 @@
-.fondo1{
-	background: lightgray;
+.fondo1 {
+    background: lightgray;
 }
 
-.fondo2{
-	background: lightskyblue;
+.fondo2 {
+    background: lightskyblue;
 }
 
-.fondo3{
-	background: lightyellow;
+.fondo3 {
+    background: lightyellow;
 }
 
-.fondo4{
-	background: lightsalmon;
+.fondo4 {
+    background: lightsalmon;
 }
 
-.fondo5{
-	background: lightgreen;
+.fondo5 {
+    background: lightgreen;
 }
 
-.fondo6{
-	background: black;
+.fondo6 {
+    background: black;
 }
 
-.medida_cm{
-	border:  lightskyblue 1px solid;
-	height: 3cm;
+.medida_cm {
+    border: lightskyblue 1px solid;
+    height: 3cm;
 }
 
-.fondo_barra{
-	background-color: lightsteelblue;
+.fondo_barra {
+    background-color: lightsteelblue;
 }
 
-body{
-	text-align: center;
+body {
+    text-align: center;
 }
 
-
-
-.caja{
-	border-radius: 10px;
-	border: 1px solid lightgray;
-	box-shadow: 5px 5px 5px lightskyblue;
-	display: block;
-	margin: 10px ;
-	padding: 10px;
-	text-align: center;
+.caja {
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    box-shadow: 5px 5px 5px lightskyblue;
+    display: block;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
 }
 
-.cajaServicios{
-	border-radius: 10px;
-	border: 1px solid lightgray;
-	box-shadow: 5px 5px 5px gray;
-	display: block;
-	margin: 10px ;
-	padding: 10px;
-	text-align: center;
+.cajaServicios {
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    box-shadow: 5px 5px 5px gray;
+    display: block;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
 }
 
-.cajaServicios:hover{
-	transition: .6s ease-out;
-	transform:scale(1.1);
-	box-shadow: 0px 0px 15px 15px lightskyblue;
+.cajaServicios:hover {
+    transition: .6s ease-out;
+    transform: scale(1.1);
+    box-shadow: 0px 0px 15px 15px lightskyblue;
 }
 
-.cajaPrincipal{
-	border-radius: 10px;
-	border: 1px solid lightgray;
-	display: block;
-	margin: 10px auto ;
-	padding: 8px;
-	text-align: center;	
+.cajaPrincipal {
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    display: block;
+    margin: 10px auto;
+    padding: 8px;
+    text-align: center;
 }
 
-
-.fondoclaro{
-	background: #EEFFFF;
-}
-.escalar{
-	width: 80%;
-	height:  90%;
+.fondoclaro {
+    background: #EEFFFF;
 }
 
-
-.borde_der{
-	border-right: #E1E1E1 1px solid;
-	text-align: left;
-}
-p{
-	line-height: 30px; 
+.escalar {
+    width: 80%;
+    height: 90%;
 }
 
-.derecha{
-	text-align: left;
+.borde_der {
+    border-right: #E1E1E1 1px solid;
+    text-align: left;
 }
+
+p {
+    line-height: 30px;
+}
+
+.derecha {
+    text-align: left;
+}
+
+.titulos {
+    text-align: center;
+    align-items: center;
+}
+
+.centar {}

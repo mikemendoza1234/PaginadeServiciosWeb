@@ -49,15 +49,15 @@ class TallerC{
             $passw = $_POST["password_r"];
 
             $query = "INSERT INTO usuario (nombre, usuario, passwd, telefono) VALUES ('$name', '$user', '$passw', '$phone');";
-            $response = TallerM::insert_user($query);
+            $response = TallerM::insert($query);
             if($response) header("location: ?ruta=logi");
-            else {
+            else 
                 echo'<script type="text/javascript">
                     alert("Verifica los datos proporcionados en el formulario");
                     window.location.href="index.php?ruta=register";
                     </script>';
             
-            }
+            
             
 
         }
@@ -65,7 +65,38 @@ class TallerC{
     }
 
     public function new_service(){
-        
+        if( isset($_POST["name_s"]) && isset($_POST["clave_s"]) && isset($_POST["precio_s"])  && isset($_POST["time_s"]) ){
+            $name_service = $_POST["name_s"];
+            $key_service = $_POST["clave_s"];
+            $price = $_POST["precio_s"];
+            $service_duration = $_POST["time_s"];
+            $query = "INSERT INTO servicios (nombre, clave, precio, duracion_hrs) VALUES ('$name_service', '$key_service', $price, $service_duration);";
+            $response = TallerM::insert($query);
+            if(!($response))
+                echo'<script type="text/javascript">
+                    alert("Verifica los datos proporcionados en el formulario");
+                    window.location.href="index.php?ruta=alta_servicios";
+                    </script>';
+            
+
+        }
+    }
+
+
+    public function new_technice(){
+        if( isset($_POST["name_t"]) && isset($_POST["user_t"]) && isset($_POST["password_t"]) ){
+            $name_technice = $_POST["name_t"];
+            $user = $_POST["user_t"];
+            $passw = $_POST["password_t"];
+            $query = "INSERT INTO tecnico (nombre, numero_empleado, passwd) VALUES ('$name_technice', '$user', '$passw')";
+            $response = TallerM::insert($query);
+            if(!($response))
+                echo'<script type="text/javascript">
+                    alert("Verifica los datos proporcionados en el formulario");
+                    window.location.href="index.php?ruta=alta_servicios";
+                    </script>';
+
+        }
     }
 
 }

@@ -2,6 +2,7 @@
 require_once "conexionDB.php";
 
 class TallerM extends ConexionBD{
+
     static public function isUserM($query){
         $pdo = conexionBD::cBD()->prepare($query);
         $pdo -> execute();
@@ -9,7 +10,7 @@ class TallerM extends ConexionBD{
         $pdo -> close();
     }
 
-    static public function insert_user($query){
+    static public function insert($query){
         $pdo = conexionBD::cBD()->prepare($query);
         $response;
         if($pdo -> execute())
@@ -17,6 +18,14 @@ class TallerM extends ConexionBD{
         else 
             $response = false;
         return $response;
+        $pdo -> close();
+    }
+
+
+    static public function Query($query){
+        $pdo = conexionBD::cBD()->prepare($query);
+        $pdo -> execute();
+        return $pdo -> fetchAll();
         $pdo -> close();
     }
 }
