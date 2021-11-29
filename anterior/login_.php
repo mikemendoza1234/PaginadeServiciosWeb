@@ -41,7 +41,7 @@ session_destroy();
 						<div class="row">
 							<div class="col-12">
 								<h2>Login</h2>
-								<form action="validar.php" method="post">
+								<form method="post">
 									<div>
 										 <div class="form-group">                       
 										 	<label class="form-label">Usuario</label>
@@ -98,4 +98,12 @@ session_destroy();
 	<script type="text/javascript" src="css/bootstrap/js/bootstrap.bundle.js"></script>
 </body>
 </html>
+
+
+<?php
+$iniciar_sesion = new TallerC();
+$iniciar_sesion-> IsUser();
+
+
+?>
 

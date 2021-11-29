@@ -47,7 +47,7 @@ session_destroy();
 					<div class="alert alert-info">Seleccione los servicios que usted requiere</div>	
 				</div>
 				<!-- Formulario con Buttons-->
-				<form action="process_user_services.php" method="post">
+				<form action="index.php?ruta=process_user_services" method="post">
 					<!-- Primera fila de servicios -->
 					<div class="row">
 						<!-- Cada servicio tendrá una separación de 

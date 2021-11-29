@@ -15,7 +15,6 @@
 
 			if($fila[1] == $pass)
 			{
-				session_start();
 				$_SESSION['id'] = $fila[0];
 				header("location: user_services.php");
 				print("Ir a pagina de usuarios");
