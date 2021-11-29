@@ -8,4 +8,15 @@ class TallerM extends ConexionBD{
         return $pdo -> fetch();
         $pdo -> close();
     }
+
+    static public function insert_user($query){
+        $pdo = conexionBD::cBD()->prepare($query);
+        $response;
+        if($pdo -> execute())
+            $response = true;
+        else 
+            $response = false;
+        return $response;
+        $pdo -> close();
+    }
 }

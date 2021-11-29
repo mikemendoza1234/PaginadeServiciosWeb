@@ -1,6 +1,11 @@
 <?php  
 session_start();
 session_destroy();
+
+$new_user = new TallerC();
+$new_user -> new_user();
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -41,27 +46,27 @@ session_destroy();
 						<div class="row">
 							<div class="col-12">
 								<h2>Registro</h2>
-								<form action="#" method="post">
+								<form method="post">
 									<div>
 										<div class="form-group">
 											<label class="form-label">Nombre Completo</label>
 											<div class="input-group">
 												<span class="input-group-text" id="basic-addon1"><i class="fa fa-address-card fa-2x"></i></span>
-												<input class="form-control" name="name" placeholder="Su nombre completo" required>	
+												<input class="form-control" name="name_r" placeholder="Su nombre completo" required>	
 											</div>	
 										</div>									
 										 <div class="form-group">                       
 										 	<label class="form-label">Nombre de Usuario</label>
 											<div class="input-group mb-2">
 												<span class="input-group-text" id="basic-addon1"><i class="fa fa-user fa-2x"></i></span>
-											  	<input class="form-control" type="text" name="user" placeholder="Su Usuario" required>
+											  	<input class="form-control" type="text" name="user_r" placeholder="Su Usuario" required>
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="form-label">Teléfono</label>
 											<div class="input-group mb-2">
 						                          <span class="input-group-text" id="basic-addon1"><i class="fa fa-phone fa-2x"></i></span>
-						                          <input class="form-control" name="phone" placeholder="Su teléfono" required>	
+						                          <input class="form-control" type="number" name="phone" placeholder="Su teléfono" required>	
 						                    </div>
 										</div>
 
@@ -69,7 +74,7 @@ session_destroy();
 											<label class="form-label">Contraseña</label>
 											<div class="input-group mb-2">
 						                          <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock fa-2x"></i></span>
-						                          <input class="form-control" type="password" name="password" placeholder="Su contraseña" required>	
+						                          <input class="form-control" type="password" name="password_r" placeholder="Su contraseña" required>	
 						                    </div>
 										</div>
 									</div>

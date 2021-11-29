@@ -2,9 +2,8 @@ CREATE TABLE usuario(
     usuario_id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     usuario VARCHAR(50) NOT NULL,
-    passwd VARCHAR(20),
-    telefono INT(11),
-    codigo VARCHAR(50)
+    passwd VARCHAR(20) NOT NULL,
+    telefono VARCHAR(20) NOT NULL
 
 );
 
