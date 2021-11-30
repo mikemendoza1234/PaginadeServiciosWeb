@@ -1,8 +1,6 @@
 <?php
 session_start();
 session_destroy();
-$reg_pedido = new TallerC();
-$reg_pedido-> reg_pedido();
 ?>
 <html>
 <head>
@@ -46,71 +44,27 @@ $reg_pedido-> reg_pedido();
 				<br>
 				<div class="container">
 					<div class="alert alert-info">
-						Los servicios seleccionados son
-					</div>	
+						Detalle de tu pedido
+					</div>
 					<br>
 				</div>
-				<!-- Formulario con Buttons-->
+					<!-- Se mostrará el detalle del pedido del usuario -->
 				<?php
 						$showsel_services = new TallerC();
 						$showsel_services -> showsel_services();
 				?>
 				
 
+				<div class="container">
+						
+				</div>
+
 				<br>
 				<br>
 				<br>
 				<hr>
-
-				<div class="container">
-						Fecha del pedido: 
-						<?php 
-							print(date("d-m-Y H:i:s"));
-						 ?>
-						 <br>	
-						 Folio del pedido
-						 <?php 
-						 	$gen_folio = new TallerC();
-							$gen_folio -> gen_folio();
-						 ?>
-					</div>
-					<form method="post">
-							<div class="container caja">
-								Selecciona una fecha para tus servicios
-								<br>
-								<hr>
-								Calendario
-								<br>	
-								Seleccionar Fecha
-								<br>	
-								<strong>Selecciona la Hora</strong>
-								<br>
-								<div class="mb-3">
-									<select class="form-select" name="hora" required>
-										<option value="12:00:00">12:00pm</option>
-										<option value="1:00:00">01:00pm</option>
-										<option value="2:00:00">02:00pm</option>
-										<option value="3:00:00">03:00pm</option>
-										<option value="4:00:00">04:00pm</option>
-										<option value="5:00:00">05:00pm</option>
-										<option value="6:00:00">06:00pm</option>
-									</select>		
-								</div>					
-								<br>	
-								<div class="row">
-									<div class="col-8">	
-										<br>
-										<br>
-										<button type="submit" class="btn-lg btn-success">Confirmar Cita</button>
-									</div>
-									<div class="col-4">
-										<label class="form-label"><strong> Notas para el tecnico</strong></label>
-										<textarea class="form-control" rows="2" name="notas"></textarea>
-									</div>
-								</div>
-								<hr>
-							</div>
-					</form>
+				<br>
+				<br>	
 				<?php include ("tabla_info.php") ?>
 			</div>
 		</div>

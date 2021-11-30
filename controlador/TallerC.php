@@ -219,5 +219,112 @@ class TallerC{
         $folio = date("Ydm");
         $folio = $folio. $num_id+1;
         print($folio);
+
     }
+
+    public function reg_pedido(){
+        
+        if (isset($_POST["hora"])) {
+
+            $username = $_SESSION['id'];
+            $query = "SELECT * FROM usuario WHERE usuario = '$username'";
+            $response = TallerM::isUserM($query);
+            $usuario_id = $response["usuario_id"];
+            //Guardo el id del tecnico
+            $tecnico_id = 1;
+            //Estatus como pendiente
+            $estatus = 'P';
+            //Guardo el folio
+            $query = "SELECT * FROM pedidos";
+            $response = TallerM::isUserM($query);
+            $num_id = $response;
+            $folio = date("Ydm");
+            $folio = $folio. $num_id+1;
+            //Guardo la fecha del pedido
+            $fecha = date("d/m/Y H:i:s");
+            //Guardo la fecha de la cita
+            $hora = $_POST["hora"];
+            $fecha_inicio_gral = date("d/m/Y ").$hora;
+            $fecha_fin_gral = date("d/m/Y ").$hora;
+            
+            $horas_necesarias = 0;
+            //Guardo las horas trabajadas
+            $horas_trabajadas = 0;
+            
+            $importe = 0;
+            //Guardo las notas
+            $notas = $_POST["notas"];
+            echo 'ID'.$usuario_id. 
+                '<br> tecnico_id '.$tecnico_id.
+                '<br> estatus'.$estatus. 
+                '<br> folio '.$folio.
+                '<br> fecha_inicio_gral'.$fecha_inicio_gral. 
+                '<br> fecha_fin_gral '.$fecha_fin_gral.
+                '<br> horas_necesarias'.$horas_necesarias. 
+                '<br> horas_trabajadas '.$horas_trabajadas.
+                '<br> importe '.$importe.
+                '<br> notas '.$notas
+                ;
+/*
+            //Guardo el importe
+            //Guardo las horas necesarias
+            for ($i=0; $i < $contadorL; $i++) {
+                $query = 'SELECT * FROM servicios WHERE servicio_id = "'.$listaL[$i].'"' ;
+                $response = TallerM::Select($query);
+                foreach($response as $key => $value)
+                {
+                    $importe = $importe + $value["precio"];
+                    $horas_necesarias += $value["duracion_hrs"];
+                    $query2 = "INSERT INTO partidas_pedido (pedidos_id, servicios_id, fecha_inicio, fecha_fin, estatus) 
+                                VALUES ('$num_id', '$listaL[$i]', ' fecha', 'fecha', estatus)";
+                }
+            }
+
+            $query = "
+                INSERT INTO pedidos (usuario_id, tecnico_id, estatus, folio, fecha, fecha_inicio_gral, fecha_fin_gral, horas_necesarias, horas_trabajadas, importe) 
+                VALUES ('$usuario_id', '$tecnico_id', '$estatus', '$folio', '$fecha', '$fecha_inicio_gral', '$fecha_fin_gral', 'horas_necesarias', 'horas_trabajadas', '$importe');";
+            $response = TallerM::insert($query);
+            if($response) header("location: ?ruta=detalle_pedido");
+            else 
+                echo'<script type="text/javascript">
+                    alert("Verifica los datos proporcionados en el formulario");
+                    window.location.href="index.php?ruta=process_user_services.php";
+                    </script>';
+*/
+        }
+    }
+
+    public function showservices(){
+        $username = $_SESSION['id'];
+        $query = "SELECT * FROM usuario WHERE usuario = '$username'";
+        $response = TallerM::isUserM($query);
+        $usuario_id = $response["usuario_id"];
+
+        $query = 'SELECT * FROM pedidos WHERE usuario_id = "'.$usuario_id.'"' ;
+        $response = TallerM::Select($query);
+        foreach($response as $key => $value){
+            echo '<div class=" row container">
+                    <div class=" col-md-2">
+                        <strong>Fecha del pedido:'.$value["fecha"].' </strong>
+                    </div>
+                    <div class=" col-md-2">
+                        <strong>Folio: '.$value["folio"].'</strong>
+                    </div>
+                    <div class=" col-md-2">
+                        <strong>Estatus: '.$value["estatus"].'</strong>
+                    </div>
+                    <div class=" col-md-2">
+                        <strong>Importe:'.$value["importe"].' </strong>
+                    </div>
+                    <div class=" col-md-4">
+                        <strong>Notas:'.$value["notas"].' </strong>
+                    </div>
+                </div> <br><br><hr>';
+        }
+    $query = 'SELECT * FROM servicios WHERE ';
+    }
+
+
 }
+
+    

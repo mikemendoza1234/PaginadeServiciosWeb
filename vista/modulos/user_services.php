@@ -1,6 +1,7 @@
 <?php  
 session_start();
 session_destroy();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -60,9 +61,8 @@ session_destroy();
 				</div>	
 					<br>
 					<button type="submit" class=" btn-lg btn-primary">Enviar servicios</button>
-				</form>	 <!-- Fin del formularios -->
+				</form>	 
 				
-
 
 				<br>
 				<br>
