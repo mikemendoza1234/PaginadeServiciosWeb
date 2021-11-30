@@ -210,6 +210,14 @@ class TallerC{
                 </div>
             </div>';
 
+    }
 
+    public function gen_folio(){
+        $query = "SELECT * FROM pedidos";
+        $response = TallerM::isUserM($query);
+        $num_id = $response;
+        $folio = date("Ydm");
+        $folio = $folio. $num_id+1;
+        print($folio);
     }
 }

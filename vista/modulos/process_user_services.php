@@ -19,7 +19,7 @@
 				<div>
 					<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 						<div class="container-fluid">
-							<a href="login.php" class="navbar-brand"> Computer Services Inc</a>
+							<a href="index.php" class="navbar-brand"> Computer Services Inc</a>
 							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse2">
 								<span class="navbar-toggler-icon"></span>
 							</button>
@@ -32,14 +32,16 @@
 				<div class="row">
 					<div class="col-md-12 ">
 						<div class="fondo6">
-							<img class="escalar" src="img/banner_services.jpg" alt="servicios">	
+							<img class="escalar" src="vista/img/banner_services.jpg" alt="servicios">	
 						</div>
 					</div>
 				</div>
 				<br>
 				<br>
 				<div class="container">
-					<div class="alert alert-info">Los servicios seleccionados son</div>	
+					<div class="alert alert-info">
+						Los servicios seleccionados son
+					</div>	
 					<br>
 				</div>
 				<!-- Formulario con Buttons-->
@@ -48,12 +50,63 @@
 						$showsel_services -> showsel_services();
 				?>
 				
-				
 
 				<br>
 				<br>
 				<br>
 				<hr>
+
+				<div class="container">
+						Fecha del pedido: 
+						<?php 
+							print(date("d-m-Y H:i:s"));
+						 ?>
+						 <br>	
+						 Folio del pedido
+						 <?php 
+						 	$gen_folio = new TallerC();
+							$gen_folio -> gen_folio();
+						 ?>
+					</div>
+					<form action="#" method="post">
+							<div class="container caja">
+								Selecciona una fecha para tus servicios
+								<br>
+								<hr>
+								Calendario
+								<br>	
+								Seleccionar Fecha
+								<br>	
+								<strong>Selecciona la Hora</strong>
+								<br>
+								<div class="mb-3">
+									<select class="form-select" name="hora" required>
+										<option value="12">12:00pm</option>
+										<option value="1">01:00pm</option>
+										<option value="2">02:00pm</option>
+										<option value="3">03:00pm</option>
+										<option value="4">04:00pm</option>
+										<option value="5">05:00pm</option>
+										<option value="5">06:00pm</option>
+									</select>		
+								</div>					
+								<br>	
+								<div class="row">
+									<div class="col-8">	
+										<br>
+										<br>
+										<button type="submit" class="btn-lg btn-success">Confirmar Cita</button>
+									</div>
+									<div class="col-4">
+										<label class="form-label"><strong> Notas para el tecnico</strong></label>
+										<textarea class="form-control" rows="2" name="notas"></textarea>
+									</div>
+								</div>
+								<hr>
+							</div>
+
+					</form>
+
 				<?php include ("tabla_info.php") ?>
 			</div>
 		</div>
