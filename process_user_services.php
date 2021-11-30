@@ -1,3 +1,7 @@
+<?php  
+session_start();
+$username = $_SESSION['id'];
+?>
 <html>
 <head>
 	<meta charset="utf-8">	
@@ -37,7 +41,12 @@
 				<br>
 				<br>
 				<div class="container">
-					<div class="alert alert-info">Los servicios seleccionados son</div>	
+					<div class="alert alert-info">
+						<?php  
+						print($username);
+						?>
+						, Los servicios seleccionados son
+					</div>	
 					<br>
 				</div>
 				<!-- Formulario con Buttons-->
@@ -47,6 +56,8 @@
 					$link = Conectar();
 					$contadorL = 0;
 					$costoTotal = 0;
+					$numServicios = 0;
+					$tiempoTotal = 0;
 					if (isset($_REQUEST['servicios'])) {
 						$contadorL = count($_REQUEST['servicios']);
 						$listaL = $_REQUEST['servicios'];
@@ -79,7 +90,8 @@
 						<div class="col-md-3">
 						<?php
 							//Contador
-									print("$fila[0]");
+									$numServicios++;
+									print("$numServicios");
 						?>
 						</div>
 						<div class="col-md-3">
@@ -92,6 +104,7 @@
 						<?php
 							//Tiempo del servicio
 									print("$fila[4] Hora/s");
+									$tiempoTotal += $fila[4];
 						?>
 						</div>
 						<div class="col-md-3">
@@ -112,23 +125,89 @@
 					}
 					?>
 					<div class="row">
-						<div class="col-md-8"></div>
+						<div class="col-md-6">
+							<?php
+								print(" <strong><br>Total de Servicios : " .$numServicios. "</strong>");
+							?>		
+						</div>
+						<div class="col-md-2">
+							<?php		
+								print("<strong><br>Tiempo Total : " .$tiempoTotal. " hrs </strong>" );
+							?>		
+						</div>
 						<div class="col-md-4">
 							<br>
 					<?php		
-						print("Costo Total : $" .$costoTotal);
+						print("<strong>Costo Total : $" .$costoTotal. "</strong>");
 					?>
 						</div>
 					</div>
-					<?php 
-					
-					?>
-				
-				<?php 
-				?>
-				
-				
+					<br>
+					<br>
+					<br>
+					<hr>
 
+					<div class="container">
+						<div class=" alert alert-primary">
+							Selecciona una fecha y hora para tus servicios
+						</div>
+					</div>
+					<div class="container">
+						Fecha del pedido: 
+						<?php 
+							print(date("d-m-Y H:i:s"));
+						 ?>
+						 <br>	
+						 Folio del pedido
+						 <?php 
+							$query = "SELECT * FROM pedidos";
+							$consulta 	= mysqli_query($link,$query);
+							$num_id = mysqli_num_rows($consulta);
+						 	$folio = date("Ydm");
+						 	$folio = $folio. $num_id+1;
+							print($folio);
+						 ?>
+					</div>
+					<form action="#" method="post">
+							<div class="container caja">
+								Selecciona una fecha para tus servicios
+								<br>
+								<hr>
+								Calendario
+								<br>	
+								Seleccionar Fecha
+								<br>	
+								<strong>Selecciona la Hora</strong>
+								<br>
+								<div class="mb-3">
+									<select class="form-select" name="hora" required>
+										<option value="12">12:00pm</option>
+										<option value="1">01:00pm</option>
+										<option value="2">02:00pm</option>
+										<option value="3">03:00pm</option>
+										<option value="4">04:00pm</option>
+										<option value="5">05:00pm</option>
+										<option value="5">06:00pm</option>
+									</select>		
+								</div>					
+								<br>	
+								<div class="row">
+									<div class="col-8">	
+										<br>
+										<br>
+										<button type="submit" class="btn-lg btn-success">Confirmar Cita</button>
+									</div>
+									<div class="col-4">
+										<label class="form-label"><strong> Notas para el tecnico</strong></label>
+										<textarea class="form-control" rows="2" name="notas"></textarea>
+									</div>
+								</div>
+								<hr>
+								
+							</div>
+
+					</form>
+					
 				<br>
 				<br>
 				<br>

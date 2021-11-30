@@ -1,12 +1,12 @@
 <?php  
 session_start();
-session_destroy();
+$username = $_SESSION['id'];
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">	
-	<title>Ejemplos de Bootstrap</title>
+	<title>Servicios</title>
 	<meta name="vieport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Framework Bootstrap -->
 	<link rel="stylesheet" href="css/bootstrap/css/bootstrap.css">
@@ -24,7 +24,7 @@ session_destroy();
 				<div>
 					<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 						<div class="container-fluid">
-							<a href="#" class="navbar-brand"> Computer Services Inc</a>
+							<a href="login.php" class="navbar-brand"> Computer Services Inc</a>
 							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse2">
 								<span class="navbar-toggler-icon"></span>
 							</button>
@@ -44,8 +44,13 @@ session_destroy();
 				<br>
 				<br>
 				<div class="container">
-					<div class="alert alert-info">Seleccione los servicios que usted requiere</div>	
-				</div>
+					
+					<div class="alert alert-info">
+						<?php  
+						print("Bienvenido " .$username);
+						?>
+						, Seleccione los servicios que usted requiere</div>	
+					</div>
 				<!-- Formulario con Buttons-->
 				<form action="process_user_services.php" method="post">
 					<!-- Primera fila de servicios -->
@@ -114,7 +119,7 @@ session_destroy();
 										<label class="form-check-label">Instalación de<br>Software/Drivers</label>
 										<p>
 											<br>Costo $500
-											<br>Tiempo estimado: 45 minutos
+											<br>Tiempo estimado: 1 Hora
 										</p>
 									</div>
 								</div>
@@ -166,7 +171,7 @@ session_destroy();
 										<label class="form-check-label">Respaldo de Archivos</label>
 										<p>
 											<br>Costo $700
-											<br>Tiempo estimado: 1.5 Horas
+											<br>Tiempo estimado: 2 Horas
 										</p>
 									</div>
 								</div>
