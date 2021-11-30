@@ -50,12 +50,14 @@ session_destroy();
 				</div>
 				<!-- Formulario con Buttons-->
 				<form action="index.php?ruta=process_user_services" method="post">
+				<div class="row">
+					
 				
 					<?php
 						$load_services = new TallerC();
 						$load_services -> list_services();
 					?>
-					
+				</div>	
 					<br>
 					<button type="submit" class=" btn-lg btn-primary">Enviar servicios</button>
 				</form>	 <!-- Fin del formularios -->
