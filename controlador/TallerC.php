@@ -142,4 +142,74 @@ class TallerC{
         
     }
 
+    public function showsel_services(){
+        $contadorL = 0;
+        $costoTotal = 0;
+        $numServicios = 0;
+        $tiempoTotal = 0;       
+        if (isset($_REQUEST['servicios'])) {
+            $contadorL = count($_REQUEST['servicios']);
+            $listaL = $_REQUEST['servicios'];
+
+            echo '<div class=" row container">
+                        <div class=" col-md-3">
+                            <strong>Numero de Servicio</strong>
+                        </div>
+                        <div class=" col-md-3">
+                            <strong>Descripción</strong>
+                        </div>
+                        <div class=" col-md-3">
+                            <strong>Tiempo Estimado</strong>
+                        </div>
+                        <div class=" col-md-3">
+                            <strong>Costo</strong>
+                        </div>
+                    </div>';
+
+            for ($i=0; $i < $contadorL; $i++) {
+                $query = 'SELECT * FROM servicios WHERE servicio_id = "'.$listaL[$i].'"' ;
+                $response = TallerM::Select($query);
+
+                //$seleccion = 'SELECT * FROM servicios WHERE clave = "'.$listaL[$i].'"' ;
+                //$consulta = mysqli_query($link, $seleccion);
+                foreach($response as $key => $value)
+                {
+
+                echo '
+                    <div class="row container">
+                        <div class="col-md-3">
+                            '.++$numServicios.'
+                        </div>
+                        <div class="col-md-3">
+                               '.$value["nombre"].'
+                        </div>
+                        <div class="col-md-3">
+                                '.$value["duracion_hrs"].'hrs
+                        </div>
+                        <div class="col-md-3">
+                                $'.$value["precio"].'
+                        </div>
+                    </div>     ';
+                    $costoTotal = $costoTotal + $value["precio"];
+                    $tiempoTotal += $value["duracion_hrs"];
+                }
+            }
+        }else{
+            echo 'No hay servicios seleccionados <br>';
+        }
+        echo '<div class="row">
+                <div class="col-md-6">
+                    <strong><br>Total de Servicios : ' .$numServicios. '</strong>
+                </div>
+                <div class="col-md-2">
+                    <strong><br>Tiempo Total : ' .$tiempoTotal. 'hrs </strong>
+                </div>
+                <div class="col-md-4">
+                    <br>
+                    <strong>Costo Total : $ '.$costoTotal.'</strong>
+                </div>
+            </div>';
+
+
+    }
 }
