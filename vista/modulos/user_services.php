@@ -9,10 +9,12 @@ session_destroy();
 	<title>Ejemplos de Bootstrap</title>
 	<meta name="vieport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Framework Bootstrap -->
-	<link rel="stylesheet" href="css/bootstrap/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="css/loginstyle.css">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-icons.css">
+	<link rel="stylesheet" href="vista/css/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="vista/css/loginstyle.css">
+	<!-- CSS only -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
 	
 
 </head>
@@ -37,7 +39,7 @@ session_destroy();
 				<div class="row">
 					<div class="col-md-12 ">
 						<div class="fondo6">
-							<img class="escalar" src="img/banner_services.jpg" alt="servicios">	
+							<img class="escalar" src="vista/img/banner_services.jpg" alt="servicios">	
 						</div>
 					</div>
 				</div>
@@ -48,153 +50,12 @@ session_destroy();
 				</div>
 				<!-- Formulario con Buttons-->
 				<form action="index.php?ruta=process_user_services" method="post">
-					<!-- Primera fila de servicios -->
-					<div class="row">
-						<!-- Cada servicio tendrá una separación de 
-							una columna entre cada servicio
-						 -->
-						<div class="col-md-1"></div>
-						<div class="col-md-3 cajaServicios">
-							<!-- Dentro de cada servicio se colocará
-								su imagen, su descripción 
-								y su Check Box
-							-->
-							<div class="row">
-								<div>
-									<img src="img/limpieza.jpg" alt="limpieza">
-								</div>
-							</div>
-							<br>
-							<div class="row">
-								<div>
-									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" name="servicios[]" value="limpieza">
-										<label class="form-check-label">Limpieza de PC</label>
-										<p>
-											<br>Costo $4000
-											<br>Tiempo estimado: 2 Horas
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-1"></div>
-						<div class="col-md-2 cajaServicios">
-							<div class="row">
-								<div>
-									<img class="escalacol3" src="img/windows.png" alt="asa">
-								</div>
-							</div>
-							<br>
-							<div class="row">
-								<div>
-									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" name="servicios[]" value="windows">
-										<label class="form-check-label">Instalación de Windows</label>
-										<p>
-											<br>Costo $1000
-											<br>Tiempo estimado: 1 Hora
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-1"></div>
-						<div class="col-md-3 cajaServicios">
-							<div class="row">
-								<div>
-									<img src="img/software.jpg" alt="software">
-								</div>
-							</div>
-							<br>
-							<div class="row">
-								<div>
-									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" name="servicios[]" value="software">
-										<label class="form-check-label">Instalación de<br>Software/Drivers</label>
-										<p>
-											<br>Costo $500
-											<br>Tiempo estimado: 45 minutos
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-1"></div>
-					</div> <!-- Fin de la primera fila de servicios -->
-
-					<!--  -->
-					<br>
-					<br>
-					<!--  -->
-
-					<!-- Segunda fila de servicios -->
-					<div class="row">
-						<div class="col-md-1"></div>
-						<div class="col-md-3 cajaServicios">
-							<div class="row">
-								<div>
-									<img src="img/mantenimiento.jpg" alt="">
-								</div>
-							</div>
-							<br>
-							<div class="row">
-								<div>
-									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" name="servicios[]" value="mantenimiento">
-										<label class="form-check-label">Mantenimiento <br> Correctivo y preventivo</label>
-										<p>
-											<br>Costo $2000
-											<br>Tiempo estimado: 2 Horas
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-1"></div>
-						<div class="col-md-2 cajaServicios">
-							<div class="row">
-								<div>
-									<img src="img/respaldo.jpg" alt="">
-								</div>
-							</div>
-							<br>
-							<div class="row">
-								<div>
-									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" name="servicios[]" value="respaldo">
-										<label class="form-check-label">Respaldo de Archivos</label>
-										<p>
-											<br>Costo $700
-											<br>Tiempo estimado: 1.5 Horas
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-1"></div>
-						<div class="col-md-3 cajaServicios">
-							<div class="row">
-								<div>
-									<img src="img/reparacion.jpg" alt="">
-								</div>
-							</div>
-							<br>
-							<div class="row">
-								<div>
-									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" name="servicios[]" value="reparacion">
-										<label class="form-check-label">Reparación</label>
-										<p>
-											<br>Costo $7000
-											<br>Tiempo estimado: 3 Horas
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-1"></div>
-					</div> <!-- Fin de la segunda fila de servicios -->
+				
+					<?php
+						$load_services = new TallerC();
+						$load_services -> list_services();
+					?>
+					
 					<br>
 					<button type="submit" class=" btn-lg btn-primary">Enviar servicios</button>
 				</form>	 <!-- Fin del formularios -->

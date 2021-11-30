@@ -13,13 +13,14 @@
                         <a href="index.php?ruta=historial" class="nav-link">Historial de servicios</a>
                     </li>
                     <li>
-                        <a href="index.php?ruta=alta_servicios" class="nav-link">Alta de servicios</a>
-                    </li>
-                    <li>
                         <a href="index.php?ruta=calendario" class="nav-link">Calendario de trabajo</a>
                     </li>
                     <li>
                         <a href="index.php?ruta=actividades" class="nav-link">Actividades realizadas por dia</a>
+                    </li>
+
+                    <li>
+                        <a href="index.php?ruta=alta_servicios" class="nav-link">Alta de servicios</a>
                     </li>
 
                     <li>

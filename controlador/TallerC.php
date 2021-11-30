@@ -65,12 +65,14 @@ class TallerC{
     }
 
     public function new_service(){
-        if( isset($_POST["name_s"]) && isset($_POST["clave_s"]) && isset($_POST["precio_s"])  && isset($_POST["time_s"]) ){
+        if( isset($_POST["name_s"]) && isset($_POST["clave_s"]) && isset($_POST["precio_s"])  && isset($_POST["time_s"]) && isset($_POST["description_s"]) ){
             $name_service = $_POST["name_s"];
             $key_service = $_POST["clave_s"];
             $price = $_POST["precio_s"];
             $service_duration = $_POST["time_s"];
-            $query = "INSERT INTO servicios (nombre, clave, precio, duracion_hrs) VALUES ('$name_service', '$key_service', $price, $service_duration);";
+            $description = $_POST["description_s"];
+
+            $query = "INSERT INTO servicios (nombre, clave, precio, duracion_hrs, descripcion) VALUES ('$name_service', '$key_service', $price, $service_duration, '$description');";
             $response = TallerM::insert($query);
             if(!($response))
                 echo'<script type="text/javascript">
@@ -84,10 +86,11 @@ class TallerC{
 
 
     public function new_technice(){
-        if( isset($_POST["name_t"]) && isset($_POST["user_t"]) && isset($_POST["password_t"]) ){
+        if( isset($_POST["name_t"]) && isset($_POST["user_t"]) && isset($_POST["password_t"])){
             $name_technice = $_POST["name_t"];
             $user = $_POST["user_t"];
             $passw = $_POST["password_t"];
+
             $query = "INSERT INTO tecnico (nombre, numero_empleado, passwd) VALUES ('$name_technice', '$user', '$passw')";
             $response = TallerM::insert($query);
             if(!($response))
@@ -97,6 +100,46 @@ class TallerC{
                     </script>';
 
         }
+    }
+
+
+    public function list_services(){
+        $query = "SELECT * FROM servicios";
+        $response = TallerM::Select($query);
+        $count = 1;
+        $catalgo = null;
+        foreach($response as $key => $value){
+            $catalgo = '
+                    <div class="col-md-3 cajaServicios">
+                        <div class="row">
+                            <div>
+                                <img class="escalacol3" src="vista/img/windows.png" alt="asa">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="servicios[]" value='.$value["servicio_id"].'>
+                                    <label class="form-check-label">'.$value["nombre"].'</label>
+                                    <p>
+                                        <br> Costo: $'.$value["precio"].'
+                                        <br>Tiempo estimado: '.$value["duracion_hrs"].' Hora(s)
+                                        <br> Descripción: '.$value["descripcion"].'
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-1"></div>
+                    <br>              
+                ';
+                
+        echo $catalgo;      
+        }
+        
+        
     }
 
 }

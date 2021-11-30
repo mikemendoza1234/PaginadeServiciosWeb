@@ -12,7 +12,8 @@ CREATE TABLE servicios(
     nombre VARCHAR(100) NOT NULL,
     clave VARCHAR(50) NOT NULL,
     precio FLOAT(6,2),
-    duracion_hrs FLOAT(6, 2)
+    duracion_hrs FLOAT(6, 2),
+    descripcion VARCHAR(250) NOT NULL
 );
 
 CREATE TABLE pedidos(
