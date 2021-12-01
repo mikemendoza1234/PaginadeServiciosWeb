@@ -1,4 +1,5 @@
 <?php
+session_start();
 ?>
 <html>
 <head>
@@ -18,17 +19,8 @@
 		<div class="cajaPrincipal">
 			<div class="container">
 				<!-- Barra de Navegación -->
-				<div>
-					<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-						<div class="container-fluid">
-							<a href="index.php" class="navbar-brand"> Computer Services Inc</a>
-							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse2">
-								<span class="navbar-toggler-icon"></span>
-							</button>
-							
-						</div>			
-					</nav>
-				</div>
+				<?php include('menu_user.php') ?>
+				
 				<br>
 				<!-- Banner de la pagina -->
 				<div class="row">
@@ -48,8 +40,8 @@
 				</div>
 					<!-- Se mostrará el detalle del pedido del usuario -->
 				<?php
-						$showsel_services = new TallerC();
-						$showsel_services -> showsel_services();
+						$showservices = new TallerC();
+						$showservices -> showservices();
 				?>
 				
 
