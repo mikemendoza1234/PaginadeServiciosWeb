@@ -314,6 +314,9 @@ class TallerC{
         $query = 'SELECT * FROM pedidos WHERE usuario_id = "'.$id_user.'"' ;
         $response = TallerM::Select($query);
         echo '<div class = "caja">';
+        if ($response < 1) {
+            echo "No hay pedidos realizados";
+        }
         foreach($response as $key => $value){
             if ($value["estatus"] = 'P') {
                 $status = "Pendiente";
@@ -338,8 +341,7 @@ class TallerC{
                     </div>
                 </div> <br><hr>';
                 $pedido_id = $value["pedidos_id"];
-        }
-        echo '<div class=" row container">
+                echo '<div class=" row container">
                 <div class=" col-md-4">
                     <strong>Servicio Solicitado: <br> </strong>
                 </div>
@@ -350,29 +352,30 @@ class TallerC{
                     <strong>Duración: <br></strong>
                 </div>
             </div> <br>';
-        $query = 'SELECT * FROM  partidas_pedido WHERE pedidos_id = "'.$pedido_id.'"' ;
-        $response = TallerM::Select($query);
-        foreach($response as $key => $value){
-            $query = 'SELECT * FROM  servicios WHERE servicio_id = "'.$value["servicio_id"].'"' ;
+            $query = 'SELECT * FROM  partidas_pedido WHERE pedidos_id = "'.$pedido_id.'"' ;
             $response = TallerM::Select($query);
-            
             foreach($response as $key => $value){
-                echo '<div class=" row container">
-                    <div class=" col-md-4">
-                        '.$value["nombre"].'
-                    </div>
-                    <div class=" col-md-4">
-                        $'.$value["precio"].'
-                    </div>
-                    <div class=" col-md-4">
-                        '.$value["duracion_hrs"].'Hrs
-                    </div>
-                </div><hr>';
+                $query = 'SELECT * FROM  servicios WHERE servicio_id = "'.$value["servicio_id"].'"' ;
+                $response = TallerM::Select($query);
+                
+                foreach($response as $key => $value){
+                    echo '<div class=" row container">
+                        <div class=" col-md-4">
+                            '.$value["nombre"].'
+                        </div>
+                        <div class=" col-md-4">
+                            $'.$value["precio"].'
+                        </div>
+                        <div class=" col-md-4">
+                            '.$value["duracion_hrs"].'Hrs
+                        </div>
+                    </div><hr>';
+                }
 
             }
+            echo "<br><br>";
         }
         echo '</div>';
-   // $query = 'SELECT * FROM partidas_pedido WHERE pedidos_id = ';
     }
 /*
     public function insertService(){
