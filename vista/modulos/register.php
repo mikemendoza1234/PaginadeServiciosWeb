@@ -27,7 +27,7 @@ $new_user -> new_user();
 				<div>
 					<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 						<div class="container-fluid">
-							<a href="login.php" class="navbar-brand"> Computer Services Inc</a>
+							<a href="#" class="navbar-brand"> Computer Services Inc</a>
 							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse2">
 								<span class="navbar-toggler-icon"></span>
 							</button>
@@ -45,7 +45,7 @@ $new_user -> new_user();
 						<div class="row">
 							<div class="col-12">
 								<h2>Registro</h2>
-								<form action="registrar.php" method="post">
+								<form method="post">
 									<div>
 										<div class="form-group">
 											<label class="form-label">Nombre Completo</label>
