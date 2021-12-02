@@ -97,4 +97,12 @@ p {
     align-items: center;
 }
 
-.centar {}
+.button {
+    width: 5cm;
+    height: 4.5cm;
+}
+
+.buttonAutoAjuste {
+    margin: 0 auto;
+    text-align: center;
+}

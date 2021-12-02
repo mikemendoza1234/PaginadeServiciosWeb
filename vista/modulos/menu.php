@@ -10,7 +10,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapse3">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li>
-                        <a href="index.php?ruta=historial" class="nav-link">Historial de servicios</a>
+                        <a href="index.php?ruta=historial" class="nav-link">Servicios por dia</a>
                     </li>
                     <li>
                         <a href="index.php?ruta=calendario" class="nav-link">Calendario de trabajo</a>

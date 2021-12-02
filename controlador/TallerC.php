@@ -234,7 +234,7 @@ class TallerC{
             for($i = 0; $i < $missing_zeros; $i++)
                 $folio .= "0";
             $folio .= ($num_id + 1);
-            return$folio;
+            return $folio;
         }    
     }
 
@@ -262,11 +262,10 @@ class TallerC{
                                         $total_time, $hours_worked, $amount, '$note');";
             $response = TallerM::insert($query);
             if(!($response))
-                echo $query;
-                // echo'<script type="text/javascript">
-                //     alert("No se inserto el pedido");
-                //     window.location.href="index.php?ruta=process_user_services";
-                //     </script>';
+                echo'<script type="text/javascript">
+                    alert("No se inserto el pedido");
+                    window.location.href="index.php?ruta=process_user_services";
+                    </script>';
 
             //Guardo el folio
             $query = "SELECT P.pedidos_id FROM pedidos P WHERE P.folio like '$folio' ";
@@ -289,11 +288,10 @@ class TallerC{
                                                 VALUES ($order_id, $listaL[$i], '$date', '$date', '$status')";
                 $response = TallerM::insert($query);
                 if(!($response))
-                    echo $query;
-                    // echo'<script type="text/javascript">
-                    //     alert("No se inserto las partidas del pedido");
-                    //     window.location.href="index.php?ruta=process_user_services";
-                    //     </script>';
+                    echo'<script type="text/javascript">
+                        alert("No se inserto las partidas del pedido");
+                        window.location.href="index.php?ruta=process_user_services";
+                        </script>';
              }
         }
     }
@@ -325,8 +323,205 @@ class TallerC{
                     </div>
                 </div> <br><br><hr>';
         }
-    $query = 'SELECT * FROM servicios WHERE ';
+    //$query = 'SELECT * FROM servicios WHERE ';
     }
+    public function get_orders($date){
+        $query = "SELECT * FROM pedidos P WHERE P.fecha_inicio_gral = '$date'";
+        $response = TallerM::Select($query);
+        return $response;
+
+    }
+
+    public function show_calendar(){
+        $month_days = date("t");
+        echo '<tr>';
+        for ($i=1; $i <= $month_days; $i++){
+            $val = $i%7;
+            $dia = null;
+            if($i < 10)
+                $dia = "0".strval($i);
+            else
+                $dia = strval($i);
+            $date = $dia."-".date("m")."-".date("Y");
+            $dateSQL = date("Y")."-".date("m")."-".$dia;
+            $response = $this->get_orders($dateSQL);
+            $result = $date;
+            foreach($response as $key => $value){
+                $folio = intval($value["folio"]);
+                $result .= "<br> Fol.#".$folio." Estat:".$value["estatus"];
+            }
+            
+            if( $val != 0)
+                echo '<td><button value="'.$dateSQL.'" name="fecha" class="button buttonAutoAjuste">'.$result.'</button></td>';
+            else
+                echo '</tr>
+                <tr>';
+        }   
+            
+    }
+    public function print_on_table($response){
+        foreach($response as $key => $value){
+                
+            $order_id = $value["pedidos_id"];
+            $status = $value["estatus"];
+            $folio = $value["folio"];
+            $date = $value["fecha_inicio_gral"];
+            $hours_worked = $value["horas_trabajadas"];
+            $amount = $value["importe"];
+            $note = $value["notas"];
+            $custumer_name = $value["nombre"];
+            $customer_phone = $value["telefono"];
+            $is_completed = '';
+            $is_pending = '';
+            if($status == 'P')
+                $is_pending = 'selected';   
+            else
+                $is_completed = 'selected';
+            
+            echo '<div class=" row container">
+                    <div class=" col-md-2">
+                        <strong>Fecha del pedido: <br>'.$date.' </strong>
+                    </div>
+                    <div class=" col-md-2">
+                        <strong>Folio: <br>'.$folio.'</strong>
+                    </div>
+                    <div class=" col-md-2">
+                        <strong>Nombre del cliente: <br>'.$custumer_name.'</strong>
+                    </div>
+                    <div class=" col-md-2">
+                        <strong>Telefono del cliente: <br>'.$customer_phone.'</strong>
+                    </div>
+                    <div class=" col-md-2">
+                        <input type="hidden" value="'.$order_id.'" name="order_id[]">
+                        <strong>Estatus: <br> <select name="orders[]" class="form-select"> 
+                            <option value="P" '.$is_pending.'>Pendiente</option>
+                            <option value="C" '.$is_completed.'>Completado</option>
+                        </select></strong>
+                    </div>
+                    <div class=" col-md-2">
+                        <strong>Importe:<br>'.$amount.' </strong>
+                    </div>
+                    <div class=" col-md-4">
+                        <strong>Notas:<br>'.$note.' </strong>
+                    </div>
+                ';
+
+
+            $query2 = "SELECT P.*, U.nombre, U.duracion_hrs FROM partidas_pedido P  JOIN servicios U ON (P.servicio_id = U.servicio_id) WHERE P.pedidos_id = $order_id";
+            $response_order = TallerM::Select($query2);
+            
+            echo '<table class="table" border="1">
+            <thead >
+            <tr class="table-dark">
+                <th scope="col">Servicio</th>
+                <th scope="col">Estatus</th>
+                <th scope="col">Duración</th>
+                <th scope="col">Inicio</th>
+                <th scope="col">Fin</th>
+            </tr>
+            </thead>
+            <tbody>
+            ';
+            foreach($response_order as $key2 => $order_data){
+                
+                $partida_id = $order_data["partidas_pedido_id"];
+                $start_date = $order_data["fecha_inicio"];
+                $end_date = $order_data["fecha_fin"];
+                $departure_status  = $order_data["estatus"];
+                $service_name = $order_data["nombre"];
+                $service_duration = $order_data["duracion_hrs"];
+                $is_completed_P = '';
+                $is_pending_P = '';
+                if($status == 'P')
+                    $is_pending_P = 'selected';   
+                else
+                    $is_completed_P = 'selected';
+                echo '<tr>
+                    <td>'.$service_name.'</td>
+                    <td> 
+                        <input type="hidden" value="'.$partida_id.'" name="order_detail_id[]">
+                        <select   name="order_detail[]" class="form-select">
+                            <option value="P" '.$is_pending_P.'>Pendiente</option>
+                            <option value="C" '.$is_completed_P.'>Completado</option>
+                        </select>
+                    </td>
+                    <td>'.$service_duration.'</td>
+                    <td>'.$start_date.'</td>
+                    <td>'.$end_date.'</td>
+                    </tr>
+                ';
+            }
+            echo '</tbody>
+            </table>
+            </div> <br><hr>
+            ';
+
+            
+
+        }
+    }
+
+    public function button_Selected(){
+        if(isset($_POST["fecha"]))
+            $_SESSION["date"] = $_POST["fecha"];
+        if( $_SESSION["date"] != null){ 
+            $date = $_SESSION["date"];
+            $query = "SELECT P.*, U.nombre, U.telefono FROM pedidos P  JOIN usuario U ON (P.usuario_id = U.usuario_id) WHERE P.fecha_inicio_gral = '$date'";
+            $response = TallerM::Select($query);
+            $this->print_on_table($response);
+        } 
+
+    }
+
+    
+
+    public function updating_data(){
+        if(isset($_POST["cambios"])){
+            $orders = ($_REQUEST["orders"]);
+            $orders_id = ($_POST["order_id"]);
+            $order_list="(";
+            for($i = 0; $i < count($orders); $i++){
+                $order_list .= $orders_id[$i].",";
+                $query="UPDATE pedidos P SET P.estatus ='$orders[$i]' WHERE P.pedidos_id=$orders_id[$i] ";
+                $response = TallerM::update($query);
+                if(!($response))
+                    echo'<script type="text/javascript">
+                        alert("No se actualizo pedido");
+                        window.location.href="index.php?ruta=actividades";
+                        </script>';
+
+            }
+            $order_list = rtrim($order_list, ",");
+            $order_list .= ")";
+
+            
+            $order_detail = ($_REQUEST["order_detail"]);
+            $order_detail_id = ($_REQUEST["order_detail_id"]);
+            for($i = 0; $i < count($order_detail); $i++){
+                $query="UPDATE partidas_pedido P SET P.estatus ='$order_detail[$i]' WHERE P.partidas_pedido_id=$order_detail_id[$i] ";
+                $response = TallerM::update($query);
+                if(!($response))
+                    echo'<script type="text/javascript">
+                        alert("No se actualizaron las partidas del pedido");
+                        window.location.href="index.php?ruta=actividades";
+                        </script>';
+            }
+
+            $query = "SELECT P.*, U.nombre, U.telefono FROM pedidos P  JOIN usuario U ON (P.usuario_id = U.usuario_id) WHERE P.pedidos_id in $order_list";
+            #echo $query;
+            $response = TallerM::Select($query);
+            $this->print_on_table($response);
+
+
+
+            
+        }
+    }
+    
+
+
+
+
 
 
 }

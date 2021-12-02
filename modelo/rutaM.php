@@ -3,7 +3,7 @@
 class Modelo {
     static function RutasModelo($rutas){
         if($rutas == "mostrar" || $rutas == "user_services" || $rutas == "process_user_services" || $rutas == "register" || $rutas == "calendario" 
-        || $rutas == "historial" || $rutas == "actividades" || $rutas == "alta_servicios" || $rutas == "new_technice" || $rutas == "graficar" || $rutas == "detalle_pedido"){
+        || $rutas == "historial" || $rutas == "actividades" || $rutas == "alta_servicios" || $rutas == "new_technice" || $rutas == "detalle_pedido"){
 			$pagina = "vista/modulos/".$rutas.".php";
             return $pagina;
 		}     

@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +15,21 @@
 </head>
 <body>
     <?php include('menu.php') ?>
-
+    <div class="container">
+        <div class="caja">
+            <h1>Servicios pendientes</h1>
+            <br>
+            <form method="POST" action="index.php?ruta=actividades">
+                <?php 
+                $show = new TallerC();
+                $show->button_Selected();
+                ?>
+                <div class="form-control">
+                    <button name="cambios" class="btn-lg btn-primary">Enviar</button>
+                </div>
+            </form> 
+        </div>
+    </div>
+    
 </body>
 </html>

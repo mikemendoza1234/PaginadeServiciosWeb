@@ -12,6 +12,18 @@
 </head>
 <body>
     <?php include('menu.php') ?>
+    
+    <div class="container">
+        <div class="caja">
+            <h1>Actividades realizazdas en el dia</h1>
+            <br>
+            <?php
+                $show = new TallerC();
+                $show->updating_data();
+
+            ?>
+        </div>
+    </div>
 
 </body>
 </html>

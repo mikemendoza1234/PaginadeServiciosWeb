@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +15,23 @@
 </head>
 <body>
     <?php include('menu.php') ?>
+    <!--  CALENDARIO  -->
 
+    <div class="container">
+        <div class="caja">
+            <h1>Calendario de actividades</h1>
+            <br>
+            <form method="POST" action="index.php?ruta=historial">
+                <table id="t1" border="1">
+                    <?php
+                        $calendar = new TallerC();
+                        $calendar->show_calendar();
+                    ?>
+                </table>
+            </form>     
+        </div>
+    </div>
+    
+    
 </body>
 </html>

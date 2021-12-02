@@ -21,6 +21,17 @@ class TallerM extends ConexionBD{
         $pdo -> close();
     }
 
+    static public function update($query){
+        $pdo = conexionBD::cBD()->prepare($query);
+        $response;
+        if($pdo -> execute())
+            $response = true;
+        else 
+            $response = false;
+        return $response;
+        $pdo -> close();
+    }
+
 
     static public function Select($query){
         $pdo = conexionBD::cBD()->prepare($query);
