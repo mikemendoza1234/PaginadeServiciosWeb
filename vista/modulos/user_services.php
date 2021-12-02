@@ -22,17 +22,7 @@ session_start();
 		<div class="cajaPrincipal">
 			<div class="container">
 				<!-- Barra de Navegación -->
-				<div>
-					<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-						<div class="container-fluid">
-							<a href="#" class="navbar-brand"> Computer Services Inc</a>
-							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse2">
-								<span class="navbar-toggler-icon"></span>
-							</button>
-							
-						</div>			
-					</nav>
-				</div>
+				<?php include('menu_user.php') ?>
 				<br>
 				<!-- Banner de la pagina -->
 				<div class="row">
@@ -49,18 +39,20 @@ session_start();
 				</div>
 				<!-- Formulario con Buttons-->
 				<form action="index.php?ruta=process_user_services" method="post">
+				<!--  
 				<div class="row">
-					
+					 -->	
 				
 					<?php
 						$load_services = new TallerC();
 						$load_services -> list_services();
 					?>
+					<!-- 
 				</div>	
+				 -->
 					<br>
 					<button type="submit" class=" btn-lg btn-primary">Enviar servicios</button>
 				</form>	 
-				
 
 				<br>
 				<br>

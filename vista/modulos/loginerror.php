@@ -1,5 +1,4 @@
 <?php  
-session_start();
 $iniciar_sesion = new TallerC();
 $iniciar_sesion-> IsUser();
 
